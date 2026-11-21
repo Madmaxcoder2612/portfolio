@@ -4,6 +4,7 @@
   root.classList.add("js");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const css = (n) => getComputedStyle(root).getPropertyValue(n).trim();
+  const BG = css("--bg") || "#0c0e12";
   const rgba = (hex, a) => {
     const n = parseInt(hex.slice(1), 16);
     return `rgba(${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}, ${a})`;
@@ -57,6 +58,17 @@
     };
     setTimeout(() => requestAnimationFrame(tick), 500);
   });
+
+  /* Cards: a soft spotlight follows the pointer (the glow itself is drawn in CSS) */
+  if (!reduced) {
+    document.querySelectorAll(".card").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        card.style.setProperty("--my", `${e.clientY - r.top}px`);
+      });
+    });
+  }
 
   /* Traceability chain: break and repair it to show what the check reports */
   const chainBox = document.getElementById("chain-box");
@@ -152,7 +164,7 @@
         zc.strokeStyle = rgba(col, 0.95); zc.lineWidth = 2; zc.stroke();
       }
       for (const p of [{ x: cx, y: cy, r: 13 }, { ...j, r: 8 }]) {
-        zc.beginPath(); zc.arc(p.x, p.y, p.r, 0, Math.PI * 2); zc.fillStyle = "#0e0f11"; zc.fill();
+        zc.beginPath(); zc.arc(p.x, p.y, p.r, 0, Math.PI * 2); zc.fillStyle = BG; zc.fill();
         zc.lineWidth = 2; zc.strokeStyle = rgba(col, 1); zc.stroke();
       }
       zc.fillStyle = col; zc.fillRect(tip.x - 5, tip.y - 5, 10, 10);
@@ -233,12 +245,17 @@
       for (let x = MAJOR; x < w; x += MAJOR) fc.fillText(String(x).padStart(4, "0"), x + 4, 90);
       for (let y = MAJOR; y < h; y += MAJOR) fc.fillText(String(y).padStart(4, "0"), 6, y - 4);
       if (px >= 0) {
-        fc.strokeStyle = rgba(ACC, 0.7);
+        const g = fc.createRadialGradient(px, py, 0, px, py, 240);   // soft light under the pointer
+        g.addColorStop(0, rgba(ACC, 0.13)); g.addColorStop(1, rgba(ACC, 0));
+        fc.fillStyle = g; fc.fillRect(0, 0, w, h);
+        fc.strokeStyle = rgba(ACC, 0.75);
+        fc.shadowColor = ACC; fc.shadowBlur = 8;
         fc.beginPath(); fc.moveTo(px + 0.5, 0); fc.lineTo(px + 0.5, h); fc.moveTo(0, py + 0.5); fc.lineTo(w, py + 0.5); fc.stroke();
         fc.strokeRect(px - 6.5, py - 6.5, 13, 13);
+        fc.shadowBlur = 0;
         const label = `X ${String(Math.round(px)).padStart(4, "0")}  Y ${String(Math.round(py)).padStart(4, "0")}`;
         const lx = px + 120 > w ? px - 124 : px + 14, ly = py + 30 > h ? py - 14 : py + 24;
-        fc.fillStyle = "#0e0f11"; fc.fillRect(lx - 4, ly - 12, 112, 18);
+        fc.fillStyle = BG; fc.fillRect(lx - 4, ly - 12, 112, 18);
         fc.fillStyle = ACC; fc.fillText(label, lx, ly);
       }
     };

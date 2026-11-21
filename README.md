@@ -38,7 +38,8 @@ flowchart LR
 | Look | An engineering-document style: graphite page, safety yellow, square corners, section numbers (§01, §02 ...), a hazard-stripe divider and a document-control nameplate. No gradients or glow |
 | Hero | A technical-drawing grid with a crosshair that shows live X and Y coordinates under the mouse. It only redraws when the mouse moves |
 | Scroll | Reveal on scroll, progress bar, active nav link, count-up numbers |
-| Cards | Square cards with yellow corner marks on hover and a dashed status stamp |
+| Cards | Square cards with yellow corner marks, a spotlight that follows the cursor and a soft glow on hover, plus a dashed status stamp |
+| Glow | Soft yellow and blue light on interactive things: buttons, nav, cards, chain boxes, chips and the hero crosshair, which also lights the grid under the pointer. Colours are cooler graphite with safety yellow and an orange tint |
 | Traceability chain | The hazard-to-test chain from the cobot project, with a "Break the chain" button that shows a failing check (a requirement without a test) in red, and "Repair" to fix it |
 | Card graphics | Small bar graphics on each project card, drawn with CSS from numbers in that project's README; they animate in on scroll |
 | Safety-zone demo | A toy model of speed and separation monitoring: move a "person" marker towards a robot arm and it slows, then stops. Works with mouse, touch drag and arrow keys |
