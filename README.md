@@ -93,7 +93,7 @@ node --check assets/main.js
 
 - **Add a project:** copy an `<article class="card reveal" data-tilt>` block in the Projects section and change the text, numbers and link.
 - **Change colours:** edit the variables at the top of `assets/style.css`.
-- **Add a link (for example LinkedIn):** add an `<a class="btn" href="..." rel="noopener">` in the Contact section. The check script enforces `rel="noopener"` on external links.
+- **Add a link (for example an email or a new profile):** add an `<a class="btn" href="..." rel="noopener">` in the Contact section. The check script enforces `rel="noopener"` on external links.
 
 ## Deploying
 
@@ -104,13 +104,13 @@ The workflow publishes to GitHub Pages. Once, in the repository settings, set **
 - **Fonts load from Google Fonts.** Offline, or if blocked, the page falls back to system fonts and still works.
 - **The checks are structural.** They catch broken links and missing basics, not bad wording or a layout that looks wrong. I checked the visual result by hand in one browser.
 - **Project numbers are copied by hand** from the other READMEs. If a project changes, this page can fall out of date.
-- **No contact form or email address** is on the page on purpose, so GitHub is the only contact route for now.
+- **No contact form or email address** is on the page yet, so LinkedIn and GitHub are the contact routes.
 - **The safety-zone demo is a picture, not a model.** The zone sizes and the 1.5 m scale are made up for illustration and are not calculated from a stopping-distance analysis; the page says so next to the demo.
 - **The 3D effect is deliberately light.** A cursor-driven tilt and zone rings, not a WebGL scene, to keep it fast on phones and low-power laptops.
 
 ## Next steps
 
-- Add LinkedIn and, if wanted, a public email address.
+- Add a public email address, if wanted.
 - Add the real-hardware quantum run and any new project cards as they ship.
 - Add a short "what I'd do differently" note under each project.
 - Add a custom domain.
