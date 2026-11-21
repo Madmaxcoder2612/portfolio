@@ -35,16 +35,15 @@ flowchart LR
 
 | Feature | Detail |
 |---|---|
-| Dark theme | Near-black background, violet accent with amber and red, the last two borrowed from safety-zone colours |
-| Hero | Dot grid that reacts to the cursor, plus pulsing zone rings (violet, amber, red) |
+| Look | An engineering-document style: graphite page, safety yellow, square corners, section numbers (§01, §02 ...), a hazard-stripe divider and a document-control nameplate. No gradients or glow |
+| Hero | A technical-drawing grid with a crosshair that shows live X and Y coordinates under the mouse. It only redraws when the mouse moves |
 | Scroll | Reveal on scroll, progress bar, active nav link, count-up numbers |
-| Cards | Cursor spotlight and a very small 3D tilt on devices with a mouse |
+| Cards | Square cards with yellow corner marks on hover and a dashed status stamp |
 | Traceability chain | The hazard-to-test chain from the cobot project, with a "Break the chain" button that shows a failing check (a requirement without a test) in red, and "Repair" to fix it |
 | Card graphics | Small bar graphics on each project card, drawn with CSS from numbers in that project's README; they animate in on scroll |
 | Safety-zone demo | A toy model of speed and separation monitoring: move a "person" marker towards a robot arm and it slows, then stops. Works with mouse, touch drag and arrow keys |
-| Cursor extras | A soft light that follows the mouse, and buttons that lean towards it (mouse only) |
 | Accessibility | Skip link, semantic landmarks, visible focus, real HTML text, keyboard friendly; the demo announces state changes to screen readers |
-| Reduced motion | `prefers-reduced-motion` turns off the canvas, tilt, reveals, count-up, glow and the arm's swing |
+| Reduced motion | `prefers-reduced-motion` turns off reveals, count-up, the blinking marker, the flowing chain lines and the arm's swing |
 | Performance | No libraries; canvases pause when off screen or when the tab is hidden |
 
 ## Quick start
@@ -70,8 +69,8 @@ node --check assets/main.js
 |---|---|
 | `index.html` | All content and structure |
 | `assets/style.css` | Design tokens (colours, fonts), layout, responsive rules, reduced-motion rules |
-| `assets/main.js` | Scroll reveal, nav state, count-up, card spotlight and tilt, hero canvas |
-| `assets/favicon.svg` | Icon: three concentric zones |
+| `assets/main.js` | Scroll reveal, nav state, count-up, the chain button, the safety-zone demo and the hero grid with crosshair |
+| `assets/favicon.svg` | Icon: a yellow square frame |
 | `scripts/check.mjs` | Fails if a link or anchor is broken, an id repeats, an image lacks alt text, an external link lacks `rel="noopener"`, placeholder text is left, or the footer lacks the full legal name |
 | `.github/workflows/ci.yml` | Runs the checks on every push and pull request, then deploys `main` to GitHub Pages |
 
@@ -108,7 +107,7 @@ The workflow publishes to GitHub Pages. Once, in the repository settings, set **
 - **Project numbers are copied by hand** from the other READMEs. If a project changes, this page can fall out of date.
 - **The email address is public on the page** as a plain mailto link, so it can be picked up by spam scrapers. There is no contact form.
 - **The safety-zone demo is a picture, not a model.** The zone sizes and the 1.5 m scale are made up for illustration and are not calculated from a stopping-distance analysis; the page says so next to the demo.
-- **The 3D effect is deliberately light.** A cursor-driven tilt and zone rings, not a WebGL scene, to keep it fast on phones and low-power laptops.
+- **There is no 3D or WebGL.** The look comes from layout, type and a few small canvases, which keeps the page fast on phones and low-power laptops.
 
 ## Next steps
 
