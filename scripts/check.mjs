@@ -26,7 +26,8 @@ for (const m of html.matchAll(/\s(href|src)="([^"]*)"/g)) {
   } else if (/^https?:\/\//.test(url)) {
     if (!url.startsWith("https://")) fail(`insecure link: ${url}`);
   } else if (url && !/^(mailto:|data:)/.test(url)) {
-    if (!existsSync(join(root, url))) fail(`${attr}="${url}" does not exist`);
+    const file = url.split(/[?#]/)[0];
+    if (!existsSync(join(root, file))) fail(`${attr}="${url}" does not exist`);
   }
 }
 
