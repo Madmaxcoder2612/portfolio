@@ -27,6 +27,7 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#demo">Demo</a></li>
         <li><a href="#focus">Focus</a></li>
         <li><a href="#path">Learning path</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -141,6 +142,31 @@
             <p class="meta">Mid-circuit measurement, classical control · Python, Qiskit</p>
             <a class="link" href="https://github.com/Madmaxcoder2612/qiskit-teleportation" rel="noopener">View repository <span aria-hidden="true">→</span></a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive demo -->
+    <section class="section" id="demo">
+      <div class="wrap">
+        <p class="kicker reveal">Interactive</p>
+        <h2 class="reveal">Move closer and watch the robot react.</h2>
+        <p class="sub reveal">A toy model of speed and separation monitoring, one of the collaborative operation modes in robot safety: the closer a person is, the slower the arm may move, until it has to stop. Move your mouse over the picture, drag on a touch screen, or use the arrow keys.</p>
+        <div class="demo reveal" id="demo-box" data-state="full">
+          <canvas id="zones" tabindex="0" role="img" aria-label="Robot arm surrounded by three safety zones. A person marker follows your pointer; the closer it gets, the slower the arm moves, and inside the inner zone the arm stops."></canvas>
+          <div class="readout">
+            <p class="readout-label">Robot state</p>
+            <p class="state" id="d-state" aria-live="polite">Full speed</p>
+            <div class="row"><span>Distance</span><b id="d-dist">-</b></div>
+            <div class="row"><span>Allowed speed</span><b id="d-speed">-</b></div>
+            <div class="meter" aria-hidden="true"><i id="d-meter"></i></div>
+            <ul class="legend" aria-label="Zone legend">
+              <li><i class="sw sw-full"></i>Outer: full speed</li>
+              <li><i class="sw sw-slow"></i>Middle: slowing, then reduced speed</li>
+              <li><i class="sw sw-stop"></i>Inner: protective stop</li>
+            </ul>
+            <p class="fine">Illustrative only. The zone sizes are made up for the picture. They are not calculated from a real stopping-distance model like the one in my cobot project.</p>
+          </div>
         </div>
       </div>
     </section>

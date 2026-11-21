@@ -35,13 +35,15 @@ flowchart LR
 
 | Feature | Detail |
 |---|---|
-| Dark theme | Near-black background, green and amber accents taken from safety-zone colours |
-| Hero | Dot grid that reacts to the cursor, plus pulsing zone rings (green, amber, red) |
+| Dark theme | Near-black background, violet accent with amber and red, the last two borrowed from safety-zone colours |
+| Hero | Dot grid that reacts to the cursor, plus pulsing zone rings (violet, amber, red) |
 | Scroll | Reveal on scroll, progress bar, active nav link, count-up numbers |
 | Cards | Cursor spotlight and a very small 3D tilt on devices with a mouse |
-| Accessibility | Skip link, semantic landmarks, visible focus, real HTML text, keyboard friendly |
-| Reduced motion | `prefers-reduced-motion` turns off the canvas, tilt, reveals and count-up |
-| Performance | No libraries; canvas pauses when off screen or when the tab is hidden |
+| Safety-zone demo | A toy model of speed and separation monitoring: move a "person" marker towards a robot arm and it slows, then stops. Works with mouse, touch drag and arrow keys |
+| Cursor extras | A soft light that follows the mouse, and buttons that lean towards it (mouse only) |
+| Accessibility | Skip link, semantic landmarks, visible focus, real HTML text, keyboard friendly; the demo announces state changes to screen readers |
+| Reduced motion | `prefers-reduced-motion` turns off the canvas, tilt, reveals, count-up, glow and the arm's swing |
+| Performance | No libraries; canvases pause when off screen or when the tab is hidden |
 
 ## Quick start
 
@@ -103,6 +105,7 @@ The workflow publishes to GitHub Pages. Once, in the repository settings, set **
 - **The checks are structural.** They catch broken links and missing basics, not bad wording or a layout that looks wrong. I checked the visual result by hand in one browser.
 - **Project numbers are copied by hand** from the other READMEs. If a project changes, this page can fall out of date.
 - **No contact form or email address** is on the page on purpose, so GitHub is the only contact route for now.
+- **The safety-zone demo is a picture, not a model.** The zone sizes and the 1.5 m scale are made up for illustration and are not calculated from a stopping-distance analysis; the page says so next to the demo.
 - **The 3D effect is deliberately light.** A cursor-driven tilt and zone rings, not a WebGL scene, to keep it fast on phones and low-power laptops.
 
 ## Next steps
