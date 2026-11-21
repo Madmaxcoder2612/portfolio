@@ -85,6 +85,11 @@
             </div>
             <h3>Cobot cell: hazard analysis and safety concept</h3>
             <p>A worked example of the first half of the safety lifecycle for a collaborative robot arm tending a CNC machine next to an operator, with no fence. It runs from <em>"what can hurt someone?"</em> to <em>"what must the control system do, and how would we prove it?"</em> and a script checks the chain from hazard to test has no gaps.</p>
+                        <div class="viz" role="group" aria-label="Distance the tool travels after a stop command (assumed model)">
+              <p class="viz-title">Distance the tool travels after a stop command (assumed model)</p>
+              <div class="bar-row"><span>At 250 mm/s</span><div class="bar"><i style="--w:6%"></i></div><b>~30 mm</b></div>
+              <div class="bar-row"><span>At full speed</span><div class="bar warn"><i style="--w:100%"></i></div><b>&gt;500 mm</b></div>
+            </div>
             <dl class="facts">
               <div><dt>12</dt><dd>hazards</dd></div>
               <div><dt>7</dt><dd>safety functions, PL d</dd></div>
@@ -102,6 +107,11 @@
             </div>
             <h3>MEMS IMU calibration and system identification</h3>
             <p>Calibration, thermal-drift modelling and five orientation filters for a simulated low-cost IMU, all in base MATLAB with the solvers and neural network written from scratch. Because the true errors are known, every stage is scored against ground truth.</p>
+                        <div class="viz" role="group" aria-label="Attitude error after 120 s at 45 °C (simulated)">
+              <p class="viz-title">Attitude error after 120 s at 45 °C (simulated)</p>
+              <div class="bar-row"><span>Without thermal model</span><div class="bar warn"><i style="--w:100%"></i></div><b>21.85°</b></div>
+              <div class="bar-row"><span>With thermal model</span><div class="bar"><i style="--w:2%"></i></div><b>0.34°</b></div>
+            </div>
             <dl class="facts">
               <div><dt>~140×</dt><dd>accel. error reduction</dd></div>
               <div><dt>1.80°</dt><dd>attitude error, adaptive EKF</dd></div>
@@ -117,6 +127,11 @@
             </div>
             <h3>Qiskit first steps: Bell, GHZ and Grover</h3>
             <p>Three small circuits checked against theory with tests, then run with and without a simple noise model. The noisy run shows why deeper circuits suffer more: Grover drops from 0.949 to 0.774 while Bell barely moves.</p>
+                        <div class="viz" role="group" aria-label="Grover success probability (simulator)">
+              <p class="viz-title">Grover success probability (simulator)</p>
+              <div class="bar-row"><span>Ideal</span><div class="bar"><i style="--w:94.9%"></i></div><b>0.949</b></div>
+              <div class="bar-row"><span>Noisy, illustrative</span><div class="bar warn"><i style="--w:77.4%"></i></div><b>0.774</b></div>
+            </div>
             <dl class="facts">
               <div><dt>0.949</dt><dd>Grover success, ideal</dd></div>
               <div><dt>0.774</dt><dd>Grover success, noisy</dd></div>
@@ -132,6 +147,11 @@
             </div>
             <h3>Qiskit quantum teleportation</h3>
             <p>Moves a qubit state using an entangled pair and two classical bits. A negative control that skips the corrections lands at a coin flip (about 0.5), which shows the corrections are what make it work. A noise sweep keeps success at 0.886 even at 10% two-qubit error.</p>
+                        <div class="viz" role="group" aria-label="Teleportation success (simulator)">
+              <p class="viz-title">Teleportation success (simulator)</p>
+              <div class="bar-row"><span>With corrections</span><div class="bar"><i style="--w:100%"></i></div><b>1.000</b></div>
+              <div class="bar-row"><span>Without corrections</span><div class="bar warn"><i style="--w:50%"></i></div><b>~0.5</b></div>
+            </div>
             <dl class="facts">
               <div><dt>1.000</dt><dd>success, ideal</dd></div>
               <div><dt>~0.5</dt><dd>without corrections</dd></div>
@@ -139,6 +159,33 @@
             <p class="meta">Mid-circuit measurement, classical control · Python, Qiskit</p>
             <a class="link" href="https://github.com/Madmaxcoder2612/qiskit-teleportation" rel="noopener">View repository <span aria-hidden="true">→</span></a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Traceability chain -->
+    <section class="section" id="chain">
+      <div class="wrap">
+        <p class="kicker reveal">The idea behind the cobot project</p>
+        <h2 class="reveal">Every requirement traces back to a hazard and forward to a test.</h2>
+        <p class="sub reveal">In a safety case, nothing may float free. My cobot project keeps this chain in plain files and a script checks it for gaps. Press the button to see what a gap looks like.</p>
+        <div class="chain reveal" id="chain-box" data-broken="false">
+          <ol class="nodes">
+            <li class="node"><span class="n-step">1</span><b class="n-num">12</b><span class="n-name">Hazards</span><small>What can hurt someone, rated by severity, frequency and possibility to avoid</small></li>
+            <li class="node"><span class="n-step">2</span><b class="n-num">PLr</b><span class="n-name">Required level</span><small>Read off the ISO 13849-1 risk graph for each hazard</small></li>
+            <li class="node"><span class="n-step">3</span><b class="n-num">7</b><span class="n-name">Safety functions</span><small>Each targeted at PL d, category 3</small></li>
+            <li class="node"><span class="n-step">4</span><b class="n-num">20</b><span class="n-name">Requirements</span><small>What each function must do</small></li>
+            <li class="node last"><span class="n-step">5</span><b class="n-num">20</b><span class="n-name">Test cases</span><small>11 test, 5 measurement, 3 inspection, 1 analysis</small></li>
+          </ol>
+          <ul class="checks" aria-label="Checks the script runs">
+            <li class="chk" data-ok="true">Every safety function has a hazard behind it</li>
+            <li class="chk" id="chk-test" data-ok="true">Every requirement has a test case</li>
+            <li class="chk" data-ok="true">No target PL is lower than the PL the hazards demand</li>
+          </ul>
+          <div class="chain-foot">
+            <button class="btn" id="chain-toggle" type="button" aria-pressed="false">Break the chain</button>
+            <p class="chain-status" id="chain-status" aria-live="polite">All checks pass. The chain is complete.</p>
+          </div>
         </div>
       </div>
     </section>

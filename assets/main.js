@@ -99,6 +99,27 @@
     });
   }
 
+  /* Traceability chain: break and repair it to show what the check reports */
+  const chainBox = document.getElementById("chain-box");
+  const chainBtn = document.getElementById("chain-toggle");
+  if (chainBox && chainBtn) {
+    const status = document.getElementById("chain-status");
+    const chkTest = document.getElementById("chk-test");
+    const lastNode = chainBox.querySelector(".node.last");
+    const lastNum = lastNode.querySelector(".n-num");
+    chainBtn.addEventListener("click", () => {
+      const broken = chainBox.dataset.broken !== "true";
+      chainBox.dataset.broken = String(broken);
+      chainBtn.setAttribute("aria-pressed", String(broken));
+      chainBtn.textContent = broken ? "Repair the chain" : "Break the chain";
+      chkTest.dataset.ok = String(!broken);
+      lastNum.textContent = broken ? "19" : "20";
+      status.textContent = broken
+        ? "Check failed: 1 of 20 requirements has no test case. The build stops until it is fixed."
+        : "All checks pass. The chain is complete.";
+    });
+  }
+
   /* Interactive demo: speed and separation monitoring as a toy model.
      The zone sizes are made up for the picture; see the note on the page. */
   const zones = document.getElementById("zones");

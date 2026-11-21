@@ -39,6 +39,8 @@ flowchart LR
 | Hero | Dot grid that reacts to the cursor, plus pulsing zone rings (violet, amber, red) |
 | Scroll | Reveal on scroll, progress bar, active nav link, count-up numbers |
 | Cards | Cursor spotlight and a very small 3D tilt on devices with a mouse |
+| Traceability chain | The hazard-to-test chain from the cobot project, with a "Break the chain" button that shows a failing check (a requirement without a test) in red, and "Repair" to fix it |
+| Card graphics | Small bar graphics on each project card, drawn with CSS from numbers in that project's README; they animate in on scroll |
 | Safety-zone demo | A toy model of speed and separation monitoring: move a "person" marker towards a robot arm and it slows, then stops. Works with mouse, touch drag and arrow keys |
 | Cursor extras | A soft light that follows the mouse, and buttons that lean towards it (mouse only) |
 | Accessibility | Skip link, semantic landmarks, visible focus, real HTML text, keyboard friendly; the demo announces state changes to screen readers |
