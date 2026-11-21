@@ -92,7 +92,7 @@ node --check assets/main.js
 
 ## Editing the content
 
-- **Add a project:** copy an `<article class="card reveal" data-tilt>` block in the Projects section and change the text, numbers and link.
+- **Add a project:** copy an `<article class="card reveal">` block in the Projects section and change the text, numbers and link.
 - **Change colours:** edit the variables at the top of `assets/style.css`.
 - **Add a link (for example an email or a new profile):** add an `<a class="btn" href="..." rel="noopener">` in the Contact section. The check script enforces `rel="noopener"` on external links.
 
