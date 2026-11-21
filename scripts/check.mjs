@@ -32,7 +32,18 @@ for (const m of html.matchAll(/\s(href|src)="([^"]*)"/g)) {
 
 // external anchors need rel="noopener"
 for (const m of html.matchAll(/<a\s[^>]*href="https:\/\/[^"]*"[^>]*>/g)) {
-  if (!/rel="[^"]*noopener/.test(m[0]) && !/fonts\.g/.test(m[0])) fail(`external link without rel="noopener": ${m[0].slice(0, 80)}`);
+  if (!/rel="[^"]*noopener/.test(m[0])) fail(`external link without rel="noopener": ${m[0].slice(0, 80)}`);
+}
+
+// No third-party requests: nothing may be loaded from another host (privacy and copyright rule).
+// Only <a> links may point elsewhere. Fonts, scripts, images and styles must be local files.
+for (const m of html.matchAll(/<(link|script|img|iframe|source|video|audio)\s[^>]*(?:href|src)="(?:https?:)?\/\/[^"]*"[^>]*>/g)) {
+  fail(`third-party resource loaded: ${m[0].slice(0, 90)}`);
+}
+for (const file of ["assets/style.css", "assets/main.js"]) {
+  const text = readFileSync(join(root, file), "utf8");
+  if (/@import|url\(\s*["']?(?:https?:)?\/\//.test(text)) fail(`${file} loads a third-party resource`);
+  if (/\b(?:fetch|XMLHttpRequest|WebSocket|sendBeacon)\b|import\(\s*["']https?:/.test(text)) fail(`${file} makes a network request`);
 }
 
 // images need alt text

@@ -101,7 +101,7 @@ The workflow publishes to GitHub Pages. Once, in the repository settings, set **
 
 ## Limitations
 
-- **Fonts load from Google Fonts.** Offline, or if blocked, the page falls back to system fonts and still works.
+- **Fonts are the visitor's system fonts** (Inter or JetBrains Mono if installed, otherwise Segoe UI, SF or similar). Nothing is loaded from Google or any other third party, on purpose: it avoids privacy and licensing risk. See [Third-party material](#third-party-material).
 - **The checks are structural.** They catch broken links and missing basics, not bad wording or a layout that looks wrong. I checked the visual result by hand in one browser.
 - **Project numbers are copied by hand** from the other READMEs. If a project changes, this page can fall out of date.
 - **The email address is public on the page** as a plain mailto link, so it can be picked up by spam scrapers. There is no contact form.
@@ -112,8 +112,17 @@ The workflow publishes to GitHub Pages. Once, in the repository settings, set **
 
 - Add the real-hardware quantum run and any new project cards as they ship.
 - Add a short "what I'd do differently" note under each project.
+- Decide on an Impressum and a short privacy notice (GitHub Pages logs visitor IP addresses, and the email address is public). I am not a lawyer; a free generator or the Verbraucherzentrale pages are a starting point.
 - Add a custom domain.
 
 ## License
 
 MIT, see [LICENSE](LICENSE). Copyright (c) 2026 Abhishek Vijay Potekar.
+
+## Third-party material
+
+None. The page loads no fonts, scripts, images, styles or trackers from other hosts. All code, text, the favicon and the diagrams are original work and covered by the MIT licence above. `scripts/check.mjs` fails the build if a third-party resource is added.
+
+Product and standard names (Qiskit, MATLAB, ISO 13849-1 and so on) are used only to say what I worked with or studied. No text from any standard is reproduced.
+
+> This is a technical statement, not legal advice. A public site in Germany may also need an Impressum and a privacy notice; see Next steps.
