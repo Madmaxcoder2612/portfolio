@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abhishek Vijay Potekar | Functional safety and robotics</title>
+  <meta name="description" content="Portfolio of Abhishek Vijay Potekar: hazard analysis for a collaborative robot cell, MEMS sensor calibration and fusion, and first steps in quantum computing. Learning projects, honestly labelled.">
+  <meta name="theme-color" content="#0a0d12">
+  <meta property="og:title" content="Abhishek Vijay Potekar | Functional safety and robotics">
+  <meta property="og:description" content="Hazard analysis, sensor calibration and quantum computing projects, each with honest limitations.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <header class="nav" id="nav">
+    <a class="brand" href="#top" aria-label="Abhishek Vijay Potekar, back to top">
+      <span class="brand-mark" aria-hidden="true"></span>AVP
+    </a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#focus">Focus</a></li>
+        <li><a href="#path">Learning path</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <canvas id="field" aria-hidden="true"></canvas>
+      <div class="rings" aria-hidden="true">
+        <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+      </div>
+      <div class="wrap hero-inner">
+        <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span>Open to functional safety and robotics roles</p>
+        <h1 class="reveal">Abhishek Vijay Potekar</h1>
+        <p class="lead reveal">I'm building towards <span class="hl">functional safety for collaborative robots</span>: learning to ask what can hurt someone, what the control system must do about it, and how to prove it does.</p>
+        <div class="cta reveal">
+          <a class="btn primary" href="#projects">See the projects</a>
+          <a class="btn" href="https://github.com/Madmaxcoder2612" rel="noopener">GitHub profile</a>
+        </div>
+        <ul class="stats reveal" aria-label="At a glance">
+          <li><strong data-count="12">12</strong><span>hazards analysed in a cobot cell</span></li>
+          <li><strong data-count="20">20</strong><span>safety requirements, each with a test</span></li>
+          <li><strong data-count="4">4</strong><span>public repos with CI</span></li>
+        </ul>
+      </div>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to About"><span></span></a>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="wrap grid-2">
+        <div>
+          <p class="kicker reveal">About</p>
+          <h2 class="reveal">Careful engineering, explained plainly.</h2>
+        </div>
+        <div class="prose reveal">
+          <p>I'm a master's student moving into functional safety and robotics. My background is in sensors, estimation and simulation, and I'm now learning the safety lifecycle that sits around machines that work next to people.</p>
+          <p>I'm at the start of that road, and the projects below show it: every one is a learning project, labelled as such, with its assumptions and limitations written down. I'd rather show a small chain that is traceable and checked than a big claim I can't back up.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <p class="kicker reveal">Projects</p>
+        <h2 class="reveal">Four public repositories</h2>
+        <p class="sub reveal">Each one has a README with results up front, tests or a checking script, continuous integration, and a Limitations section.</p>
+
+        <div class="cards">
+          <article class="card feature reveal" data-tilt>
+            <div class="card-top">
+              <span class="tag">Functional safety</span>
+              <span class="status">Learning project</span>
+            </div>
+            <h3>Cobot cell: hazard analysis and safety concept</h3>
+            <p>A worked example of the first half of the safety lifecycle for a collaborative robot arm tending a CNC machine next to an operator, with no fence. It runs from <em>"what can hurt someone?"</em> to <em>"what must the control system do, and how would we prove it?"</em> and a script checks the chain from hazard to test has no gaps.</p>
+            <dl class="facts">
+              <div><dt>12</dt><dd>hazards</dd></div>
+              <div><dt>7</dt><dd>safety functions, PL d</dd></div>
+              <div><dt>20</dt><dd>requirements and tests</dd></div>
+              <div><dt>~30 mm</dt><dd>stop distance at 250 mm/s (assumed model)</dd></div>
+            </dl>
+            <p class="meta">HARA, ISO 13849-1 risk graph, traceability matrix · Python</p>
+            <a class="link" href="https://github.com/Madmaxcoder2612/cobot-hara-safety-concept" rel="noopener">View repository <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card reveal" data-tilt>
+            <div class="card-top">
+              <span class="tag">Sensors and estimation</span>
+              <span class="status">Simulation study</span>
+            </div>
+            <h3>MEMS IMU calibration and system identification</h3>
+            <p>Calibration, thermal-drift modelling and five orientation filters for a simulated low-cost IMU, all in base MATLAB with the solvers and neural network written from scratch. Because the true errors are known, every stage is scored against ground truth.</p>
+            <dl class="facts">
+              <div><dt>~140×</dt><dd>accel. error reduction</dd></div>
+              <div><dt>1.80°</dt><dd>attitude error, adaptive EKF</dd></div>
+            </dl>
+            <p class="meta">Least squares, Allan variance, Kalman filtering · MATLAB</p>
+            <a class="link" href="https://github.com/Madmaxcoder2612/mems-imu-calibration" rel="noopener">View repository <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card reveal" data-tilt>
+            <div class="card-top">
+              <span class="tag">Quantum computing</span>
+              <span class="status">Simulator only</span>
+            </div>
+            <h3>Qiskit first steps: Bell, GHZ and Grover</h3>
+            <p>Three small circuits checked against theory with tests, then run with and without a simple noise model. The noisy run shows why deeper circuits suffer more: Grover drops from 0.949 to 0.774 while Bell barely moves.</p>
+            <dl class="facts">
+              <div><dt>0.949</dt><dd>Grover success, ideal</dd></div>
+              <div><dt>0.774</dt><dd>Grover success, noisy</dd></div>
+            </dl>
+            <p class="meta">Superposition, entanglement, amplitude amplification · Python, Qiskit</p>
+            <a class="link" href="https://github.com/Madmaxcoder2612/qiskit-bell-ghz-grover" rel="noopener">View repository <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="card reveal" data-tilt>
+            <div class="card-top">
+              <span class="tag">Quantum computing</span>
+              <span class="status">Simulator only</span>
+            </div>
+            <h3>Qiskit quantum teleportation</h3>
+            <p>Moves a qubit state using an entangled pair and two classical bits. A negative control that skips the corrections lands at a coin flip (about 0.5), which shows the corrections are what make it work. A noise sweep keeps success at 0.886 even at 10% two-qubit error.</p>
+            <dl class="facts">
+              <div><dt>1.000</dt><dd>success, ideal</dd></div>
+              <div><dt>~0.5</dt><dd>without corrections</dd></div>
+            </dl>
+            <p class="meta">Mid-circuit measurement, classical control · Python, Qiskit</p>
+            <a class="link" href="https://github.com/Madmaxcoder2612/qiskit-teleportation" rel="noopener">View repository <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Focus -->
+    <section class="section" id="focus">
+      <div class="wrap">
+        <p class="kicker reveal">Focus</p>
+        <h2 class="reveal">What I work with, and where I'm still learning</h2>
+        <div class="cols">
+          <div class="panel reveal">
+            <h3><span class="pip pip-on" aria-hidden="true"></span>Used in my projects</h3>
+            <ul class="chips">
+              <li>Python</li><li>MATLAB</li><li>Git and GitHub</li><li>GitHub Actions CI</li>
+              <li>pytest</li><li>Qiskit</li><li>Kalman filtering</li><li>Least-squares identification</li>
+              <li>Traceability (hazard to test)</li>
+            </ul>
+          </div>
+          <div class="panel reveal">
+            <h3><span class="pip pip-learn" aria-hidden="true"></span>Learning now</h3>
+            <ul class="chips muted">
+              <li>HARA and risk graphs</li><li>FMEA, FMEDA, FTA</li><li>Safety cases</li>
+              <li>IEC 61131-3 safety logic</li><li>FSoE over EtherCAT</li><li>Robot kinematics</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning path -->
+    <section class="section" id="path">
+      <div class="wrap">
+        <p class="kicker reveal">Learning path</p>
+        <h2 class="reveal">Standards I'm working through</h2>
+        <p class="sub reveal">I use public summaries to learn the structure. Any limit value I quote has to be checked against the purchased standard before real use, and my repos say so.</p>
+        <ol class="timeline">
+          <li class="reveal"><span class="code">ISO 12100</span><div><h3>Risk assessment and risk reduction</h3><p>The vocabulary and process everything else hangs from.</p></div></li>
+          <li class="reveal"><span class="code">ISO 13849-1</span><div><h3>Safety-related parts of control systems</h3><p>Performance Level, categories and the risk graph, used in my cobot project.</p></div></li>
+          <li class="reveal"><span class="code">ISO 10218 · ISO/TS 15066</span><div><h3>Industrial and collaborative robots</h3><p>Robot safety requirements and collaborative operation modes.</p></div></li>
+          <li class="reveal"><span class="code">IEC 61508</span><div><h3>Functional safety of E/E/PE systems</h3><p>The generic foundation: lifecycle, SIL and systematic capability.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <p class="kicker reveal">Contact</p>
+        <h2 class="reveal">Let's talk.</h2>
+        <p class="sub reveal">If you work in functional safety or robotics and have advice on what to learn next, or a role where this fits, I'd be glad to hear from you.</p>
+        <div class="cta reveal">
+          <a class="btn primary" href="https://github.com/Madmaxcoder2612" rel="noopener">github.com/Madmaxcoder2612</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>© 2026 Abhishek Vijay Potekar. Source on <a href="https://github.com/Madmaxcoder2612" rel="noopener">GitHub</a>.</p>
+    </div>
+  </footer>
+
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
