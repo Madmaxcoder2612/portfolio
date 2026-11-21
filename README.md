@@ -101,7 +101,7 @@ The workflow publishes to GitHub Pages. Once, in the repository settings, set **
 
 ## Limitations
 
-- **Fonts are the visitor's system fonts** (Inter or JetBrains Mono if installed, otherwise Segoe UI, SF or similar). Nothing is loaded from Google or any other third party, on purpose: it avoids privacy and licensing risk. See [Third-party material](#third-party-material).
+- **Fonts are self-hosted** (about 90 KB in total), so no request goes to Google or any other third party. If a font fails to load, the page falls back to system fonts. See [Third-party material](#third-party-material).
 - **The checks are structural.** They catch broken links and missing basics, not bad wording or a layout that looks wrong. I checked the visual result by hand in one browser.
 - **Project numbers are copied by hand** from the other READMEs. If a project changes, this page can fall out of date.
 - **The email address is public on the page** as a plain mailto link, so it can be picked up by spam scrapers. There is no contact form.
@@ -121,7 +121,16 @@ MIT, see [LICENSE](LICENSE). Copyright (c) 2026 Abhishek Vijay Potekar.
 
 ## Third-party material
 
-None. The page loads no fonts, scripts, images, styles or trackers from other hosts. All code, text, the favicon and the diagrams are original work and covered by the MIT licence above. `scripts/check.mjs` fails the build if a third-party resource is added.
+The page loads nothing from other hosts. All code, text, the favicon and the diagrams are original work under the MIT licence above. `scripts/check.mjs` fails the build if a third-party resource is added.
+
+Two fonts are included in the repo, each under the SIL Open Font License 1.1 (free to use, embed and redistribute, including commercially, as long as the licence text stays with them):
+
+| Font | Files | Licence text |
+|---|---|---|
+| Inter, copyright 2016 The Inter Project Authors | `assets/fonts/inter-latin-var.woff2` | `assets/fonts/OFL-Inter.txt` |
+| JetBrains Mono, copyright 2020 The JetBrains Mono Project Authors | `assets/fonts/jetbrains-mono-latin-var.woff2` | `assets/fonts/OFL-JetBrainsMono.txt` |
+
+The files are the Latin subsets from the `@fontsource-variable` packages, which republish the official releases.
 
 Product and standard names (Qiskit, MATLAB, ISO 13849-1 and so on) are used only to say what I worked with or studied. No text from any standard is reproduced.
 
