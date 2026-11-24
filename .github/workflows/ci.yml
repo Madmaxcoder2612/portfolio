@@ -19,6 +19,7 @@ jobs:
           node-version: 22
       - run: node scripts/check.mjs
       - run: node --check assets/main.js
+      - run: python3 scripts/test_update_stars.py
 
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

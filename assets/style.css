@@ -311,3 +311,7 @@ h2 { font-size: clamp(1.9rem, 4vw, 2.9rem); font-weight: 700; max-width: 24ch; }
 .footer a:hover { color: var(--accent); text-shadow: 0 0 12px var(--glow-soft); }
 
 @media (prefers-reduced-motion: reduce) { .hl { animation: none; } }
+
+/* GitHub star count, written into the page by scripts/update_stars.py. Hidden at zero. */
+.stars { margin-left: 10px; color: var(--accent); white-space: nowrap; }
+.stars[hidden] { display: none; }

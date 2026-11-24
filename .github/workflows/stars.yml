@@ -1,0 +1,52 @@
+name: Update star counts
+
+# Once a day, read the star count of each project repo and write it into
+# index.html (hidden while a repo has 0 stars). Then start the normal
+# CI and deploy workflow, because a push made with the built-in token does not.
+
+on:
+  schedule:
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: stars
+  cancel-in-progress: false
+
+jobs:
+  stars:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read star counts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          repos=$(grep -o 'data-repo="[^"]*"' index.html | cut -d'"' -f2 | sort -u)
+          json="{"
+          for r in $repos; do
+            n=$(gh api "repos/$OWNER/$r" --jq .stargazers_count) || { echo "skip $r"; continue; }
+            json="$json\"$r\": $n,"
+          done
+          json="${json%,}}"
+          echo "$json"
+          echo "$json" > counts.json
+      - name: Write counts into the page
+        id: write
+        run: echo "result=$(python3 scripts/update_stars.py "$(cat counts.json)")" >> "$GITHUB_OUTPUT"
+      - name: Commit and deploy if changed
+        if: steps.write.outputs.result == 'changed'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Update star counts"
+          git push
+          gh workflow run ci.yml --ref main
