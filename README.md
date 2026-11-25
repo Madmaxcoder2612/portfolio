@@ -1,9 +1,9 @@
 # Portfolio website
 
-![CI](https://github.com/Madmaxcoder2612/portfolio/actions/workflows/ci.yml/badge.svg)
-![Stack: HTML, CSS, JS](https://img.shields.io/badge/stack-HTML%20%7C%20CSS%20%7C%20vanilla%20JS-blue)
-![License: MIT](https://img.shields.io/badge/license-MIT-green)
-![Status: live](https://img.shields.io/badge/status-in%20progress-orange)
+[![CI](https://github.com/Madmaxcoder2612/portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/Madmaxcoder2612/portfolio/actions/workflows/ci.yml)
+[![Stack: HTML, CSS, JS](https://img.shields.io/badge/stack-HTML%20%7C%20CSS%20%7C%20vanilla%20JS-blue)](https://madmaxcoder2612.github.io/portfolio/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Status: live](https://img.shields.io/badge/status-in%20progress-orange)](#limitations)
 
 A single-page dark portfolio for a functional safety and robotics job search. It presents four public learning projects with their headline numbers, the standards being studied, and a clear line between what is used and what is still being learned.
 
